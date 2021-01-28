@@ -4,5 +4,5 @@
 number = int(input("Please type in a number:"))
 newNumber = number + 1
 print("This is your number plus one: " + str(newNumber))
-#Alternatively you can do...
+# Alternatively you can do...
 print ('{} plus one is {}' .format(number, newNumber))
