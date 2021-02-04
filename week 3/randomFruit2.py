@@ -1,5 +1,7 @@
 # this program prints out a random fruit
 
+# Author: Katie O'Brien
+
 import random
 
 fruits = ('Apple', 'Banana', 'Pear', 'Mango', 'Orange')
