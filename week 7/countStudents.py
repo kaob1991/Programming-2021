@@ -4,13 +4,30 @@
 
 # Author: Katie O'Brien 
 
+import json
+students = []
+filename = "students.json"
+
+def writeDict (obj):
+     with open (filename, "wt") as f:
+         json.dump(obj,f)
+
+def readDict ():
+    with open (filename) as f:
+        return json.load (f)
+
+
 def displayMenu ():
     print ('What would you like to do?: ')
+    print ("\t (l) load existing saved students")
     print ('\t (a) Add new student')
     print ('\t (v) View students')
+    print ('\t (s) Save Students')
     print ('\t (q) Quit')
-    choice = input("Please enter one letter (a/v/q):").strip() #removes leading and trailing whitespace
+    choice = input("Please enter one letter (l/a/v/s/q):").strip() #removes leading and trailing whitespace
     return choice
+
+    
 
 def doAdd (students):
     currentStudent = {}
@@ -44,8 +61,18 @@ def doView (students):
         displayModules(currentStudent ['modules'])
 
 
+def doSave (): 
+    writeDict (students)
+    print ("Students saved")
 
-students = []
+
+def doLoad ():
+    global students 
+    students = readDict()
+    print ("Students loaded")
+    
+
+
 
 choice = displayMenu()
 
@@ -53,8 +80,12 @@ while (choice != 'q'):
 
     if choice == ('a'):
         doAdd(students)
+    elif choice == ("l"):
+        doLoad ()
     elif choice == ('v'):
         doView(students)
+    elif choice == ('s'):
+        doSave ()
     elif choice != ('q'):
         print('Please enter either a, v or q')
     choice = displayMenu()
